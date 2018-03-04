@@ -133,4 +133,7 @@ enter和back是宏定义，在控制台打印输出。
 </br>
 semantic.h：与图形绘制、获取抽象语法树的值 相关的函数定义</br>
 semantic.cpp：与图形绘制、获取抽象语法树的值 相关的函数实现</br>
-main.cpp：编译器的主程序
+main.cpp：编译器的主程序</br>
+p89-8-10.draw：语义分析测试用例</br>
+parsetest.draw：语法分析测试用例</br>
+scantest.draw：词法分析测试用例
