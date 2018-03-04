@@ -44,20 +44,20 @@ ScaleStatement -> SCALE IS L_BRACKET Expression COMMA Expression R_BRACKET</br>
 RotStatement -> ROT IS Expression</br>
 ForStatement -> FOR T FROM Expression TO Expression STEP Expression DRAW L_BRACKET Expression COMMA Expression R_BRACKET</br>
 Expression -> Expression PLUS Term </br>
-	    | Expression MINUS Term</br>
-	    | Term	 </br>
+            | Expression MINUS Term</br>
+            | Term	 </br>
 Term ->	Term MUL Factor	 </br>   
-      | Term DIV Factor</br>
-      | Factor</br>
+            | Term DIV Factor</br>
+            | Factor</br>
 Factor -> PLUS Factor</br>
-	| MINUS Factor</br>
-	| Component</br>
+            | MINUS Factor</br>
+            | Component</br>
 Component -> Atom POWER Component</br>
-	   | Atom 	</br>
+            | Atom 	</br>
 Atom ->	CONST_ID</br>
-      | T</br>
-      | FUNC L_BRACKET Expression COMMA Expression R_BRACKET</br>
-      | L_BRACKET Expression COMMA Expression R_BRACK</br>
+            | T</br>
+            | FUNC L_BRACKET Expression COMMA Expression R_BRACKET</br>
+            | L_BRACKET Expression COMMA Expression R_BRACK</br>
 </br>
 消除左递归和公共左因子G3：</br>
 Program -> Statement SEMICO Program | ε</br>
