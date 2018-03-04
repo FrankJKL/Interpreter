@@ -20,18 +20,18 @@ OriginStatement -> ORIGIN IS L_BRACKET Expression COMMA Expression R_BRACKET</br
 ScaleStatement -> SCALE IS L_BRACKET Expression COMMA Expression R_BRACKET</br>
 RotStatement -> ROT IS Expression</br>
 ForStatement -> FOR T FROM Expression TO Expression STEP Expression DRAW L_BRACKET Expression COMMA Expression R_BRACKET</br>
--- 前面是句子的类型，下面是表达式的文法
+-- 前面是句子的类型，下面是表达式的文法</br>
 Expression -> Expression PLUS Expression </br>
-	    | Expression MINUS Expression</br>
-	    | Expression MUL Expression</br>
-	    | Expression DIV Expression</br>
-	    | PLUS Expression</br>
-	    | MINUS Expression</br>
-	    | Expression POWER Expression</br>
-	    | CONST_ID</br>
-	    | T</br>
-	    | FUNC L_BRACKET Expression COMMA Expression R_BRACKET</br>
-	    | L_BRACKET Expression COMMA Expression R_BRACKET</br>
+            | Expression MINUS Expression</br>
+            | Expression MUL Expression</br>
+            | Expression DIV Expression</br>
+            | PLUS Expression</br>
+            | MINUS Expression</br>
+            | Expression POWER Expression</br>
+            | CONST_ID</br>
+            | T</br>
+            | FUNC L_BRACKET Expression COMMA Expression R_BRACKET</br>
+            | L_BRACKET Expression COMMA Expression R_BRACKET</br>
 
 以上的文法G1给出了Expression所有的所有形式，但是没有区分表达式之间的优先级，即所有的候选项均具有同等的指导分析的权利，从而造成有些分析步骤的不确定性，因此G1是一个二义文法。为了改写文法，首先根据运算的优先级将Expression的所有候选项分组，具有相同优先级的候选项被分在同一个组中，并为每一个组引入一个非终结符。二元加减优先级最低，他们对应的非终结符沿用Expression；二元乘除运算应该高一级，为他们引入新的非终结符Term;依次类推。得到无二义的文法G2。
 文法G2：
