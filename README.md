@@ -9,7 +9,7 @@ for T from 0 to 300 step 1 draw(t,0); --横坐标轴</br>
 for T from 0 to 300 step 1 draw(0,-t); --纵坐标轴</br>
 </br>
 for T from 0 to 300 step 1 draw(t,-t); --f(t)=t</br>
-当执行rot is 0;这句代码时，得到Rot_Angle的值，执行origin is (50,400);函数时得到Origin_x,Origin_y的值。执行scale is (2,1);函数时得到</br>Scale_x,Scale_y的值，最后在执行绘图函数时才会成功。不管前三条语句出现的顺序如何，总是比例-》旋转-》平移。最后再画出图形。</br>
+当执行rot is 0;这句代码时，得到Rot_Angle的值，执行origin is (50,400);函数时得到Origin_x,Origin_y的值。执行scale is (2,1);函数时得到Scale_x,Scale_y的值，最后在执行绘图函数时才会成功。不管前三条语句出现的顺序如何，总是比例-》旋转-》平移。最后再画出图形。</br>
 
 ## 函数绘图语言的文法变换
 由于我们最终构造的是递归下降的语法分析器，要求文法是LL1(1)的，也即无二义性、无左递归、无公共左因子。</br>
