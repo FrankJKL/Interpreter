@@ -1,0 +1,2 @@
+//Óï·¨·ÖÎöÆ÷²âÊÔ³ÌĞò
+for t from 0 to 2*PI step PI/50 draw (cos(t),sin(t));
