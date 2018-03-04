@@ -13,6 +13,7 @@ for T from 0 to 300 step 1 draw(t,-t); --f(t)=t</br>
 
 ## 函数绘图语言的文法变换
 由于我们最终构造的是递归下降的语法分析器，要求文法是LL1(1)的，也即无二义性、无左递归、无公共左因子。</br>
+</br>
 最原始的文法G1：</br>
 Program -> ε | Program Statement SEMICO</br>
 Statement -> OriginStatement | ScaleStatement | RotStatement | ForStatement --分别对应上面例子中的前四条语句</br>
@@ -34,7 +35,8 @@ Expression -> Expression PLUS Expression </br>
             | L_BRACKET Expression COMMA Expression R_BRACKET</br>
 
 以上的文法G1给出了Expression所有的所有形式，但是没有区分表达式之间的优先级，即所有的候选项均具有同等的指导分析的权利，从而造成有些分析步骤的不确定性，因此G1是一个二义文法。为了改写文法，首先根据运算的优先级将Expression的所有候选项分组，具有相同优先级的候选项被分在同一个组中，并为每一个组引入一个非终结符。二元加减优先级最低，他们对应的非终结符沿用Expression；二元乘除运算应该高一级，为他们引入新的非终结符Term;依次类推。得到无二义的文法G2。
-文法G2：
+</br>
+文法G2：</br>
 Program -> ε | Program Statement SEMICO</br>
 Statement -> OriginStatement | ScaleStatement | RotStatement | ForStatement</br>
 OriginStatement -> ORIGIN IS L_BRACKET Expression COMMA Expression R_BRACKET</br>
@@ -56,8 +58,8 @@ Atom ->	CONST_ID</br>
       | T</br>
       | FUNC L_BRACKET Expression COMMA Expression R_BRACKET</br>
       | L_BRACKET Expression COMMA Expression R_BRACK</br>
-
-消除左递归和公共左因子G3：
+</br>
+消除左递归和公共左因子G3：</br>
 Program -> Statement SEMICO Program | ε</br>
 Statement -> OriginStatement | ScaleStatement | RotStatement | ForStatement</br>
 OriginStatement -> ORIGIN IS L_BRACKET Expression COMMA Expression R_BRACKET</br>
@@ -74,8 +76,8 @@ Atom ->	CONST_ID</br>
       | T</br>
       | FUNC L_BRACKET Expression COMMA Expression R_BRACKET</br>
       | L_BRACKET Expression COMMA Expression R_BRACK</br>
-
-转换成适合写递归下降子程序的文法G4:
+</br>
+转换成适合写递归下降子程序的文法G4:</br>
 Program -> {Statement SEMICO} -- 一个程序由多条语句组成</br>
 Statement -> OriginStatement | ScaleStatement | RotStatement | ForStatement</br>
 OriginStatement -> ORIGIN IS L_BRACKET Expression COMMA Expression R_BRACKET</br>
@@ -126,9 +128,9 @@ static void OriginStatement (void) {
 	MatchToken (R_BRACKET);		//匹配右括号
 
 	back("<原点设置语句>");
-}
+}</br>
 enter和back是宏定义，在控制台打印输出。
-
+</br>
 semantic.h：与图形绘制、获取抽象语法树的值 相关的函数定义</br>
 semantic.cpp：与图形绘制、获取抽象语法树的值 相关的函数实现</br>
 main.cpp：编译器的主程序
